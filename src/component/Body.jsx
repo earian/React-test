@@ -1,5 +1,6 @@
 import { useState , useEffect} from 'react';
 import Blogs from './blogs';
+import useFetch from './useFetch';
 
 
 const Body = () => {
@@ -10,42 +11,21 @@ const Body = () => {
     //     {title: 'How to make a living', content: 'Some special content and exclusive!' , author: 'Walter White', id: 4},
     
     // ];
-    let [blogs, setPosts] = useState(null);
-    let [isPending , setIsPending] = useState(true);
-    let [error , setError] = useState(null);
+    
+    // function handleDelete(id) {
+    //     let newPosts = blogs.filter((post)=> post.id !== id );
+    //     setData(newPosts);
+    // }
 
-    function handleDelete(id) {
-        let newPosts = blogs.filter((post)=> post.id !== id );
-        setPosts(newPosts);
-    }
-
-    useEffect(()=>{
-        setTimeout(() => {
-            fetch('http://localhost:8000/blogs')
-            .then(res => {
-                if(res.ok) return res.json()
-                else throw Error(`Couldn't fetch the data right now`)
-            })
-            .then(data => {
-                setPosts(data);
-                setIsPending(false);
-                setError(null);
-            })
-            .catch(err => {
-                setError(err.message);
-                setIsPending(false);
-            });
-        }, 3000);
-        
-    }, [])
+    let { data: blogs, isPending , error } = useFetch('http://localhost:8000/blogs');
     
 
     return ( 
         <div className="main-container">
             {error && <div className='pending-div'>{ error }</div>}
             {isPending && <div className='pending-div'>Loading the content... :\</div>}
-            {blogs && <Blogs title="All the posts" blogs={ blogs } handleDelete={ handleDelete } />}
-            {blogs && <Blogs title="walter's Exclusive!" blogs={ blogs.filter(post => post.author === 'Walter White') } handleDelete={ handleDelete } />}
+            {blogs && <Blogs title="All the posts" blogs={ blogs } />}
+            {blogs && <Blogs title="walter's Exclusive!" blogs={ blogs.filter(post => post.author === 'Walter White') } />}
         </div>
      );
 }
