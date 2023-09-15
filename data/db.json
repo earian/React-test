@@ -1,0 +1,26 @@
+{
+    "blogs": [
+        {
+            "title": "what is chemistery by the way?",
+            "body": "this is some dummy text for the test puposes this is some dummy text for the test puposes this is some dummy text for the test puposes this is some dummy text for the test puposes this is some dummy text for the test puposes",
+            "author": "Walter White",
+            "id": 1
+        },
+        {
+            "title": "on marlon brando not steve !",
+            "body": "this is some dummy text for the test puposes this is some dummy text for the test puposes this is some dummy text for the test puposes this is some dummy text for the test puposes this is some dummy text for the test puposes",
+            "author": "Walter Isaacson",
+            "id": 2
+        },
+        { "title": "how to fool anyone", 
+          "content": "some content and dummy text" , 
+          "author": "Ben Franklin", 
+          "id": 3
+        },
+        { "title": "How to make a living", 
+          "content": "Some special content and exclusive!" , 
+          "author": "Walter White", 
+          "id": 4}
+
+    ]
+}
