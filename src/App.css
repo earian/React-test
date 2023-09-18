@@ -132,7 +132,12 @@
   margin: 5px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-
+.create-blog-form-cont input[type="submit"] {
+  width: 60%;
+  margin: 15px auto;
+  font-size: 14px;
+  color: blueviolet;
+}
 .blog-detail-container {
   margin:auto;
   margin-top: 20px;
