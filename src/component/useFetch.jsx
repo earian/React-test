@@ -8,7 +8,6 @@ const useFetch = (url) => {
 
 
     useEffect(()=>{
-        setTimeout(() => {
             fetch(url)
             .then(res => {
                 if(res.ok) return res.json()
@@ -24,7 +23,6 @@ const useFetch = (url) => {
                 setIsPending(false);
                 setData(null);
             });
-        }, 3000);
     }, [])
 
     return { data , isPending , error };
