@@ -1,24 +1,15 @@
-import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
-    let [login, setLogin] = useState('Login');
 
-    function loginHandler(){
-        setLogin('Panel');
-        if(login == 'Panel'){ 
-            window.location = 'https://google.com';
-         }
-    }
+    
     return ( 
     <div className="main-header">
-        <div className="logo">LOGO</div>
+        <div className="logo">Blogs Basement</div>
         <nav>
             <ol>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Pics</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#" onClick={ loginHandler }>{ login }</a></li>
+                <Link to="/">Home</Link>
+                <Link to="/create">New Blog</Link>
             </ol>
         </nav>
     </div>
