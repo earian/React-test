@@ -54,6 +54,9 @@ const CreateBlog = () => {
                     <option value="Walter Isaacson">Walter Isaacson</option>
                     <option value="Ben Franklin">Ben Franklin</option>
                     <option value="Arian">Arian</option>
+                    <option value="Albert Camus">Albert Camus</option>
+                    <option value="Victor Hugo">Victor Hugo</option>
+                    <option value="Nassim Taleb">Nassim Taleb</option>
                 </select>
                 {!isPending && <input type="submit" value="Sumbit" />}
                 {isPending && <input type="submit" value="Sumbiting..." disabled/>}

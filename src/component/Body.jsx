@@ -1,31 +1,34 @@
 import { useState , useEffect} from 'react';
 import Blogs from './blogs';
 import useFetch from './useFetch';
+import AuthorsList from './AuthorsList';
 
 
 const Body = () => {
-    // let posts = [
-    //     {title: "what is Chemistry by the way?", content: 'some content and dummy text' , author: 'Walter White', id: 1},
-    //     {title: 'on marlon brando not steve jobs !', content: 'some content and dummy text' , author: 'Walter Isaacson', id: 2},
-    //     {title: 'how to fool anyone', content: 'some content and dummy text' , author: 'Ben Franklin', id: 3},
-    //     {title: 'How to make a living', content: 'Some special content and exclusive!' , author: 'Walter White', id: 4},
-    
-    // ];
-    
-    // function handleDelete(id) {
-    //     let newPosts = blogs.filter((post)=> post.id !== id );
-    //     setData(newPosts);
-    // }
 
+    const [filter, setFilter] = useState(null);
     let { data: blogs, isPending , error } = useFetch('http://localhost:8000/blogs');
     
+    const filterBlogs = (e) => {
+        let currentAuthor = e.target.dataset.author;
+        let authorsParagraph = document.querySelectorAll('.authors-cont p');
+        if(filter == currentAuthor) {
+            authorsParagraph.forEach(p => p.style.backgroundColor = 'transparent');
+            setFilter(null);
+            return
+        }
+        authorsParagraph.forEach(p => p.style.backgroundColor = 'transparent');
+        e.target.style.backgroundColor = 'rgb(26, 88, 110)';
+        setFilter(currentAuthor);
+    };
 
     return ( 
         <div className="main-container">
             {error && <div className='pending-div'>{ error }</div>}
             {isPending && <div className='pending-div'>Loading the content... :\</div>}
-            {blogs && <Blogs title="All the posts" blogs={ blogs } />}
-            {blogs && <Blogs title="walter's Exclusive!" blogs={ blogs.filter(post => post.author === 'Walter White') } />}
+            {blogs && <Blogs title="Latest Posts" blogs={ blogs.slice(blogs.length - 5) } />}
+            {<AuthorsList data={ { blogs } } handleFilter={ filterBlogs } />}
+            {filter && <Blogs title={`${filter}'s Exclusive !`} blogs={ blogs.filter(post => post.author === filter) } />}
         </div>
      );
 }
