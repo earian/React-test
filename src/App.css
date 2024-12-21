@@ -119,6 +119,9 @@
   padding: 15px;
   margin-top: 10px;
 }
+.create-blog-main-cont h3 {
+  font-family: monospace;
+}
 .create-blog-main-cont .create-blog-form-cont {
   display: flex;
   flex-flow: column nowrap;
@@ -172,7 +175,8 @@
 .blog-detail-container button {
   width: 60%;
   height: 30px;
-  margin-top: 15px;
+  display: block;
+  margin: 15px auto;
 }
 
 .authors-cont {

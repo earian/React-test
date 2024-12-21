@@ -29,7 +29,7 @@ const CreateBlog = () => {
 
     return (
         <div className="create-blog-main-cont">
-            <h3>Create your blog here</h3>
+            <h3>Create Your Blog Post Here</h3>
             <form className="create-blog-form-cont" onSubmit={handleSubmit}>
                 <label>Title:</label>
                 <input 
